@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React study 2</title>
+</head>
+<body>
+<!--Target Container-->
+<div id="react-container"></div>
+
+<!--React Library & React DOM-->
+<script src="../node_modules/react/dist/react.js"></script>
+<script src="../node_modules/react-dom/dist/react-dom.js"></script>
+<script>
+    var items = [
+        '1 lb Salmon',
+        '1 cpu Pine Nuts',
+        '2 cpus Butter Lettuce',
+        '1 Yellow Squash',
+        '1/2 cpu Olive Oil',
+        '3 cloves of Garlic'
+    ];
+    var ul1 = React.createElement(
+        'ul',
+        {
+            className: 'ingredients'
+        },
+        items.map((ingredient, i) =>
+            React.createElement('li', {key: i}, ingredient)
+        )
+    );
+    ReactDOM.render(ul1, document.getElementById('react-container'));
+</script>
+</body>
+</html>
