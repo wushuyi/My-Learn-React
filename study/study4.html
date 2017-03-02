@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react study 4</title>
+</head>
+<body>
+<!--Target Container-->
+<div id="react-container"></div>
+
+<!--React Library & React DOM-->
+<script src="../node_modules/react/dist/react.js"></script>
+<script src="../node_modules/react-dom/dist/react-dom.js"></script>
+<script>
+
+    //    var IngredientsList = React.createClass({
+    //        displayName: 'IngredientsList',
+    //        render(){
+    //            return React.createElement("ul", {className: "ingredients"},
+    //                this.props.items.map((ingredient, i) =>
+    //                    React.createElement("li", {key: i}, ingredient)
+    //                )
+    //            )
+    //        }
+    //    });
+
+    var IngredientsList = React.createClass({
+        displayName: "IngredientsList",
+        renderListItem(ingredient, i) {
+            return React.createElement("li", {key: i}, ingredient)
+        },
+        render() {
+            return React.createElement("ul", {className: "ingredients"},
+                this.props.items.map(this.renderListItem))
+        }
+    });
+
+    var items = [
+        '1 lb Salmon',
+        '1 cpu Pine Nuts',
+        '2 cpus Butter Lettuce',
+        '1 Yellow Squash',
+        '1/2 cpu Olive Oil',
+        '3 cloves of Garlic'
+    ];
+
+    var main = React.createElement(IngredientsList, {items}, null);
+    ReactDOM.render(
+        main,
+        document.getElementById('react-container')
+    )
+</script>
+</body>
+</html>
