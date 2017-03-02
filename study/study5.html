@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react study 5</title>
+</head>
+<body>
+<!--Target Container-->
+<div id="react-container"></div>
+
+<!--React Library & React DOM-->
+<script src="../node_modules/react/dist/react.js"></script>
+<script src="../node_modules/react-dom/dist/react-dom.js"></script>
+<script>
+    var ul1 = React.DOM.ul({className: 'ingredients'},
+        React.DOM.li(null, 'i lb Salmon'),
+        React.DOM.li(null, '1 cpu Pine Nuts'),
+        React.DOM.li(null, '2 cups Butter Lettuce'),
+        React.DOM.li(null, '1 Yellow Squash'),
+        React.DOM.li(null, '1/2 cpu Olive Oil'),
+        React.DOM.li(null, '3 cloves of Garlic')
+    );
+    var items = [
+        "1 lb pizza",
+        "1 cup Pine Nuts",
+        "2 cups Butter Lettuce",
+        "1 Yellow Squash",
+        "1/2 cup Olive Oil",
+        "3 cloves of Garlic"
+    ];
+
+    var ul2 = React.DOM.ul(
+        {
+            className: 'ingredients',
+        },
+        items.map((ingredient, key) =>
+            React.DOM.li({key}, ingredient)
+        )
+    )
+    ReactDOM.render(
+        ul1,
+        document.getElementById('react-container')
+    )
+</script>
+</body>
+</html>

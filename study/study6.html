@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>react study 6</title>
+</head>
+<body>
+<!--Target Container-->
+<div id="react-container"></div>
+
+<!--React Library & React DOM-->
+<script src="../node_modules/react/dist/react.js"></script>
+<script src="../node_modules/react-dom/dist/react-dom.js"></script>
+<script>
+    const IngredientsList1 = ({list}) =>
+        React.createElement('ul', null,
+            list.map((ingredient, i) =>
+                React.createElement('li', {key: i}, ingredient)
+            )
+        );
+
+    const Ingredients = React.createFactory(IngredientsList1);
+
+    const list = [
+        "1 lb pizza",
+        "1 cup Pine Nuts",
+        "2 cups Butter Lettuce",
+        "1 Yellow Squash",
+        "1/2 cup Olive Oil",
+        "3 cloves of Garlic"
+    ];
+
+    class IngredientsList extends React.Component {
+        renderListItem(ingredient, i) {
+            return React.createElement("li", {key: i}, ingredient)
+        }
+
+        render() {
+            return React.createElement("ul", {className: "ingredients"},
+                this.props.items.map(this.renderListItem)
+            )
+        }
+    }
+
+    const IngredientsList2 = React.createClass({
+        displayName: "IngredientsList", renderListItem(ingredient, i) {
+            return React.createElement("li", {key: i}, ingredient)
+        },
+        render() {
+            return React.createElement("ul", {className: "ingredients"},
+                this.props.items.map(this.renderListItem))
+        }
+    });
+
+    ReactDOM.render(
+        React.createElement(IngredientsList, {items: list}, null),
+        document.getElementById('react-container')
+    )
+</script>
+</body>
+</html>
